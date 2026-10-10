@@ -1,177 +1,215 @@
-INFIX TO POSTFIX CONVERSION USING STACK****
+# INFIX TO POSTFIX CONVERSION USING STACK
 
-1. PROJECT OVERVIEW
+## 1. PROJECT OVERVIEW
 
 This project explains how to convert an infix expression into a postfix expression using a stack data structure.
 
-Infix Expression:
-(A+B)*(C-D)^E
+**Infix Expression:**
 
-Postfix Expression:
-AB+CD-E^*
+`(A+B)*(C-D)^E`
 
-2. OBJECTIVE
+**Postfix Expression:**
+
+`AB+CD-E^*`
+
+## 2. OBJECTIVE
 
 The main objective is to convert an infix expression into a postfix expression by using stack operations, operator precedence, and associativity rules.
 
-3. BASIC CONCEPTS
+## 3. BASIC CONCEPTS
 
-Infix Notation:
+**Infix Notation:**
+
 In infix notation, the operator is placed between the operands.
-Example: A+B
 
-Postfix Notation:
+Example: `A+B`
+
+**Postfix Notation:**
+
 In postfix notation, the operator is placed after the operands.
-Example: AB+
 
-Stack:
+Example: `AB+`
+
+**Stack:**
+
 A stack is a linear data structure that follows the LIFO (Last In, First Out) principle.
 
-Push:
+**Push:**
+
 Push is the operation of inserting an element into the stack.
 
-Pop:
+**Pop:**
+
 Pop is the operation of removing the top element from the stack.
 
-4. OPERATOR PRECEDENCE
+## 4. OPERATOR PRECEDENCE
 
-Highest Precedence: ^ (Exponentiation)
+**Highest Precedence:** `^` (Exponentiation)
 
-Medium Precedence: *, /, % (Multiplication, Division, Modulo)
+**Medium Precedence:** `*`, `/`, `%` (Multiplication, Division, Modulo)
 
-Lowest Precedence: +, - (Addition, Subtraction)
+**Lowest Precedence:** `+`, `-` (Addition, Subtraction)
 
-Associativity:
-Exponentiation (^) is right-associative.
-Multiplication, division, modulo, addition, and subtraction are left-associative.
+**Associativity:**
 
-5. ALGORITHM
+Exponentiation (`^`) is right-associative. Multiplication, division, modulo, addition, and subtraction are left-associative.
 
-Step 1: Initialize an empty stack and an empty postfix output.
+## 5. ALGORITHM
 
-Step 2: Scan the infix expression from left to right.
+**Step 1:** Initialize an empty stack and an empty postfix output.
 
-Step 3: If the scanned symbol is an operand, append it directly to the postfix output.
+**Step 2:** Scan the infix expression from left to right.
 
-Step 4: If the scanned symbol is an opening parenthesis '(', push it onto the stack.
+**Step 3:** If the scanned symbol is an operand, append it directly to the postfix output.
 
-Step 5: If the scanned symbol is a closing parenthesis ')', pop operators into the output until the matching opening parenthesis is found. Discard both parentheses.
+**Step 4:** If the scanned symbol is an opening parenthesis `(`, push it onto the stack.
 
-Step 6: If the scanned symbol is an operator, compare its precedence and associativity with the operator at the top of the stack. Pop operators when required, then push the current operator.
+**Step 5:** If the scanned symbol is a closing parenthesis `)`, pop operators into the output until the matching opening parenthesis is found. Discard both parentheses.
 
-Step 7: After scanning the entire expression, pop all remaining operators from the stack and append them to the postfix output.
+**Step 6:** If the scanned symbol is an operator, compare its precedence and associativity with the operator at the top of the stack. Pop operators when required, then push the current operator.
 
-Step 8: Display the final postfix expression.
+**Step 7:** After scanning the entire expression, pop all remaining operators from the stack and append them to the postfix output.
 
-6. STEP-BY-STEP EXECUTION
+**Step 8:** Display the final postfix expression.
 
-Input Infix Expression:
-(A+B)*(C-D)^E
+## 6. STEP-BY-STEP EXECUTION
 
-Step 1:
-Read the opening parenthesis '('.
-Push it onto the stack.
+**Input Infix Expression:**
+
+`(A+B)*(C-D)^E`
+
+**Step 1: Read `(`**
+
+Push the opening parenthesis onto the stack.
+
 Postfix Output: Empty
 
-Step 2:
-Read operand A.
-Append A to the postfix output.
-Postfix Output: A
+**Step 2: Read `A`**
 
-Step 3:
-Read operator +.
-Push + onto the stack.
-Postfix Output: A
+Append operand `A` directly to the output.
 
-Step 4:
-Read operand B.
-Append B to the postfix output.
-Postfix Output: AB
+Postfix Output: `A`
 
-Step 5:
-Read closing parenthesis ')'.
-Pop + from the stack and append it to the output. Discard the opening parenthesis.
-Postfix Output: AB+
-Stack: Empty
+**Step 3: Read `+`**
 
-Step 6:
-Read operator *.
-Push * onto the stack.
-Postfix Output: AB+
+Push the addition operator onto the stack.
 
-Step 7:
-Read opening parenthesis '('.
-Push it onto the stack.
-Postfix Output: AB+
+Postfix Output: `A`
 
-Step 8:
-Read operand C.
-Append C to the output.
-Postfix Output: AB+C
+**Step 4: Read `B`**
 
-Step 9:
-Read operator -.
-Push - onto the stack.
-Postfix Output: AB+C
+Append operand `B` directly to the output.
 
-Step 10:
-Read operand D.
-Append D to the output.
-Postfix Output: AB+CD
+Postfix Output: `AB`
 
-Step 11:
-Read closing parenthesis ')'.
-Pop - from the stack and append it to the output. Discard the opening parenthesis.
-Postfix Output: AB+CD-
-Stack: *
+**Step 5: Read `)`**
 
-Step 12:
-Read operator ^.
-Push ^ onto the stack because exponentiation has higher precedence than multiplication.
-Postfix Output: AB+CD-
-Stack: *, ^
+Pop `+` and append it to the output. Discard the opening parenthesis.
 
-Step 13:
-Read operand E.
-Append E to the output.
-Postfix Output: AB+CD-E
+Postfix Output: `AB+`
 
-Step 14:
-The expression has ended.
-Pop ^ from the stack and append it to the output.
-Postfix Output: AB+CD-E^
+**Step 6: Read `*`**
 
-Step 15:
-Pop * from the stack and append it to the output.
-Final Postfix Output: AB+CD-E^*
+Push the multiplication operator onto the stack.
 
-7. FINAL RESULT
+Postfix Output: `AB+`
 
-Infix Expression:
-(A+B)*(C-D)^E
+**Step 7: Read `(`**
 
-Postfix Expression:
-AB+CD-E^*
+Push the opening parenthesis onto the stack.
 
-8. ADVANTAGES
+Postfix Output: `AB+`
 
-1. Simplifies expression evaluation.
-2. Eliminates parentheses from the postfix representation.
-3. Demonstrates stack operations and operator precedence.
-4. Helps in understanding data structures and algorithms.
-5. Provides a foundation for learning compiler design.
+**Step 8: Read `C`**
 
-9. APPLICATIONS
-  
-1. Compiler design.
-2. Mathematical expression evaluation.
-3. Stack-based calculators.
-4. Expression parsing.
-5. Data structures and algorithms.
+Append operand `C` directly to the output.
 
+Postfix Output: `AB+C`
 
-11. CONCLUSION
+**Step 9: Read `-`**
+
+Push the subtraction operator onto the stack.
+
+Postfix Output: `AB+C`
+
+**Step 10: Read `D`**
+
+Append operand `D` directly to the output.
+
+Postfix Output: `AB+CD`
+
+**Step 11: Read `)`**
+
+Pop `-` and append it to the output. Discard the opening parenthesis.
+
+Postfix Output: `AB+CD-`
+
+**Step 12: Read `^`**
+
+Push the exponentiation operator onto the stack because it has higher precedence than multiplication.
+
+Postfix Output: `AB+CD-`
+
+**Step 13: Read `E`**
+
+Append operand `E` directly to the output.
+
+Postfix Output: `AB+CD-E`
+
+**Step 14: End of Expression**
+
+Pop `^` from the stack and append it to the output.
+
+Postfix Output: `AB+CD-E^`
+
+**Step 15: Pop the Remaining Operator**
+
+Pop `*` from the stack and append it to the output.
+
+**Final Postfix Expression:**
+
+`AB+CD-E^*`
+
+## 7. FINAL RESULT
+
+**Infix Expression:** `(A+B)*(C-D)^E`
+
+**Postfix Expression:** `AB+CD-E^*`
+
+The infix expression is successfully converted into postfix notation using a stack.
+
+## 8. ADVANTAGES
+
+- Simplifies expression evaluation.
+- Eliminates parentheses from the postfix representation.
+- Demonstrates stack operations and operator precedence.
+- Helps in understanding data structures and algorithms.
+- Provides a foundation for learning compiler design.
+
+## 9. APPLICATIONS
+
+- Compiler design.
+- Mathematical expression evaluation.
+- Stack-based calculators.
+- Expression parsing.
+- Data structures and algorithms.
+
+## 10. TIME AND SPACE COMPLEXITY
+
+**Time Complexity: O(n)**
+
+The expression is scanned once, and each symbol is pushed onto or popped from the stack at most a constant number of times.
+
+**Space Complexity: O(n)**
+
+The stack and postfix output may require space proportional to the input expression length.
+
+Here, `n` represents the number of symbols in the input expression.
+
+## 11. CONCLUSION
 
 This project demonstrates how a stack is used to convert an infix expression into a postfix expression by applying operator precedence, associativity, and parenthesis-handling rules.
-The infix expression (A+B)*(C-D)^E is successfully converted into the postfix expression AB+CD-E^*.
+
+The infix expression `(A+B)*(C-D)^E` is successfully converted into the postfix expression `AB+CD-E^*`.
+
 This concept is useful in expression evaluation, data structures, and compiler design.
